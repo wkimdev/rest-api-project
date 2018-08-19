@@ -1,5 +1,6 @@
 package com.doublechain.ico.service;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +17,13 @@ public class WalletVO {
 		this.address = address;
 		this.key = key;
 	}
+	
+//	@Data;
+//	public static class WalletParam(){
+//		private int Id;
+//		private String address;
+//		private String key;
+//	}
+	
 }
 
