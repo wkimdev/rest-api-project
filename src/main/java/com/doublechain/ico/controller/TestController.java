@@ -1,5 +1,7 @@
 package com.doublechain.ico.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,8 @@ import com.doublechain.ico.service.WalletVO;
 @RequestMapping(value = "api")
 public class TestController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+		 
 	//id, address, key
 	//get 지갑등록후 홈에 나타날 정보 VO몇개 뿌리기
 	@GetMapping()
@@ -65,18 +69,21 @@ public class TestController {
 	}
 	
 	
-	//post요청 주소!!
-	//사용자가 Id와 addrsss, key를 설정할 경우!
-	//왜 WalletVO라는 같은 VO로 request, response하면 안되지??
-	@PostMapping()
-	public WalletVO post(@RequestBody Param param) throws Exception{
+	// post요청 주소!!
+	// 사용자가 Id와 addrsss, key를 설정할 경우!
+	// 왜 WalletVO라는 같은 VO로 request, response하면 안되지?? --> 공통 response로 받도록 뺀다음 처리
+	// VO에는 기본 생성자 선언을 해놓고 400에러 발생 방지.
+	// (no suitable constructor found, can not deserialize from Object value)
+	@PostMapping("/wallet")
+	public JSONResponse<WalletVO> updateWallet(@RequestBody WalletVO walletVO){
 		
-		int Id = param.getData1();
-		String address = param.getData2();
-		String key = param.getData3();
-		WalletVO walletVO = new WalletVO(Id, address, key);
-		return walletVO;
-	}
+		JSONResponse<WalletVO> response = new JSONResponse<WalletVO>();
+		
+		response.setCode(200);
+		response.setMsg("response walletvo post success!!!");
+		response.setData(walletVO);
+		return response;
+	} 
 	
 	//put
 	//put 으로 추가받기.

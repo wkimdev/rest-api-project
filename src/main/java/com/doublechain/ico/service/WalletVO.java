@@ -12,6 +12,9 @@ public class WalletVO {
 	private String address;
 	private String key;
 	
+	public WalletVO(){
+	}
+	
 	public WalletVO(int Id, String address, String key){
 		this.Id = Id;
 		this.address = address;
