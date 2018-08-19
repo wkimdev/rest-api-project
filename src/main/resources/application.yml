@@ -1,2 +1,10 @@
+## port
 server:
   port: 8090
+  
+  
+#api version
+api:
+  contextRoot: /v1
+  version: v1
+ 

@@ -17,7 +17,7 @@ import com.doublechain.ico.service.Param;
 import com.doublechain.ico.service.WalletVO;
 
 @RestController
-@RequestMapping(value = "api")
+@RequestMapping("${api.contextRoot}")
 public class TestController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
